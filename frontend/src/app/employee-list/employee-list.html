@@ -1,0 +1,586 @@
+<app-navbar></app-navbar>
+
+<main class="content">
+
+  <!-- EMPLOYEE FORM -->
+
+  <section class="card">
+
+    <h2 class="title">
+
+      @if (editingId === null) {
+        Employee Registration
+      } @else {
+        Edit Employee
+      }
+
+    </h2>
+
+    <form
+      #employeeForm="ngForm"
+      (ngSubmit)="submit(employeeForm)"
+      novalidate
+    >
+
+      <div class="grid">
+
+        <!-- NAME -->
+
+        <div class="field">
+
+          <label>Name</label>
+
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="employee.name"
+            required
+            minlength="2"
+            pattern="^[A-Za-z ]+$"
+            #name="ngModel"
+          >
+
+          @if (name.touched && name.invalid) {
+
+            <span class="error">
+              Name must contain letters and spaces only.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="field">
+
+          <label>Email</label>
+
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="employee.email"
+            required
+            email
+            #email="ngModel"
+          >
+
+          @if (email.touched && email.invalid) {
+
+            <span class="error">
+              Enter a valid email.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="field">
+
+          <label>Phone Number</label>
+
+          <input
+            type="text"
+            name="phone"
+            [(ngModel)]="employee.phone"
+            required
+            pattern="^[6-9][0-9]{9}$"
+            maxlength="10"
+            inputmode="numeric"
+            #phone="ngModel"
+          >
+
+          @if (phone.touched && phone.invalid) {
+
+            <span class="error">
+              Enter valid 10 digit phone number.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- AADHAR -->
+
+        <div class="field">
+
+          <label>Aadhar Card</label>
+
+          <input
+            type="text"
+            name="aadhar"
+            [(ngModel)]="employee.aadhar"
+            required
+            pattern="^[0-9]{12}$"
+            maxlength="12"
+            inputmode="numeric"
+            #aadhar="ngModel"
+          >
+
+          @if (aadhar.touched && aadhar.invalid) {
+
+            <span class="error">
+              Aadhar must contain exactly 12 digits.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- PAN -->
+
+        <div class="field">
+
+          <label>PAN Card</label>
+
+          <input
+            type="text"
+            name="pan"
+            [(ngModel)]="employee.pan"
+            required
+            pattern="^[A-Z]{5}[0-9]{4}[A-Z]$"
+            maxlength="10"
+            #pan="ngModel"
+          >
+
+          @if (pan.touched && pan.invalid) {
+
+            <span class="error">
+              Enter valid PAN.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- AGE -->
+
+        <div class="field">
+
+          <label>Age</label>
+
+          <input
+            type="number"
+            name="age"
+            [(ngModel)]="employee.age"
+            required
+            min="18"
+            max="60"
+            #age="ngModel"
+          >
+
+          @if (age.touched && age.invalid) {
+
+            <span class="error">
+              Age must be between 18 and 60.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- DEPARTMENT -->
+
+        <div class="field">
+
+          <label>Department</label>
+
+          <select
+            name="department"
+            [(ngModel)]="employee.department"
+            required
+            #department="ngModel"
+          >
+
+            <option value="">
+              Select Department
+            </option>
+
+            @for (
+              departmentName of departments;
+              track departmentName
+            ) {
+
+              <option [value]="departmentName">
+
+                {{ departmentName }}
+
+              </option>
+
+            }
+
+          </select>
+
+          @if (
+            department.touched &&
+            department.invalid
+          ) {
+
+            <span class="error">
+              Select department.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- SALARY -->
+
+        <div class="field">
+
+          <label>Salary</label>
+
+          <input
+            type="number"
+            name="salary"
+            [(ngModel)]="employee.salary"
+            required
+            min="1000"
+            #salary="ngModel"
+          >
+
+          @if (
+            salary.touched &&
+            salary.invalid
+          ) {
+
+            <span class="error">
+              Salary must be minimum 1000.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- GENDER -->
+
+        <div class="field">
+
+          <label>Gender</label>
+
+          <div class="radio-row">
+
+            @for (
+              genderName of genders;
+              track genderName
+            ) {
+
+              <label>
+
+                <input
+                  type="radio"
+                  name="gender"
+                  [value]="genderName"
+                  [(ngModel)]="employee.gender"
+                  required
+                >
+
+                {{ genderName }}
+
+              </label>
+
+            }
+
+          </div>
+
+          @if (
+            employeeForm.submitted &&
+            !employee.gender
+          ) {
+
+            <span class="error">
+              Select gender.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- JOINING DATE -->
+
+        <div class="field">
+
+          <label>Joining Date</label>
+
+          <input
+            type="date"
+            name="joiningDate"
+            [(ngModel)]="employee.joiningDate"
+            required
+            #joiningDate="ngModel"
+          >
+
+          @if (
+            joiningDate.touched &&
+            joiningDate.invalid
+          ) {
+
+            <span class="error">
+              Select joining date.
+            </span>
+
+          }
+
+        </div>
+
+
+        <!-- ACTIVE -->
+
+        <div class="field checkbox-field">
+
+          <label>
+
+            <input
+              type="checkbox"
+              name="activeEmployee"
+              [(ngModel)]="employee.activeEmployee"
+            >
+
+            Active Employee
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <!-- BUTTONS -->
+
+      <div class="actions">
+
+        @if (editingId === null) {
+
+          <button
+            class="primary"
+            type="submit"
+            [disabled]="employeeForm.invalid || saving"
+          >
+
+            @if (saving) {
+              Saving...
+            } @else {
+              Add Employee
+            }
+
+          </button>
+
+        } @else {
+
+          <button
+            class="primary"
+            type="submit"
+            [disabled]="employeeForm.invalid || saving"
+          >
+
+            @if (saving) {
+              Updating...
+            } @else {
+              Update Employee
+            }
+
+          </button>
+
+        }
+
+        <button
+          class="secondary"
+          type="button"
+          (click)="clearForm(employeeForm)"
+        >
+          Clear
+        </button>
+
+        @if (editingId !== null) {
+
+          <button
+            class="secondary"
+            type="button"
+            (click)="cancelEdit(employeeForm)"
+          >
+            Cancel Edit
+          </button>
+
+        }
+
+      </div>
+
+    </form>
+
+  </section>
+
+
+  <!-- EMPLOYEE TABLE -->
+
+  <section class="card">
+
+    <div class="list-header">
+
+      <h2 class="title">
+        Employee List
+      </h2>
+
+      <button
+        class="secondary"
+        type="button"
+        (click)="loadEmployees()"
+      >
+        Refresh
+      </button>
+
+    </div>
+
+
+    @if (loading) {
+
+      <p class="loading">
+        Loading employees...
+      </p>
+
+    } @else if (employees.length === 0) {
+
+      <p class="empty">
+        No employees found.
+      </p>
+
+    } @else {
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Age</th>
+              <th>Department</th>
+              <th>Salary</th>
+              <th>Aadhar</th>
+              <th>PAN</th>
+              <th>Gender</th>
+              <th>Joining Date</th>
+              <th>Active</th>
+              <th>Actions</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            @for (
+              emp of employees;
+              track emp.id
+            ) {
+
+              <tr>
+
+                <td>
+                  {{ emp.id }}
+                </td>
+
+                <td>
+                  {{ emp.name }}
+                </td>
+
+                <td>
+                  {{ emp.email }}
+                </td>
+
+                <td>
+                  {{ emp.phone }}
+                </td>
+
+                <td>
+                  {{ emp.age }}
+                </td>
+
+                <td>
+                  {{ emp.department }}
+                </td>
+
+                <td>
+                  {{ emp.salary }}
+                </td>
+
+                <td>
+                  {{ emp.aadhar }}
+                </td>
+
+                <td>
+                  {{ emp.pan }}
+                </td>
+
+                <td>
+                  {{ emp.gender }}
+                </td>
+
+                <td>
+                  {{ emp.joiningDate }}
+                </td>
+
+                <td>
+
+                  @if (emp.activeEmployee) {
+                    Yes
+                  } @else {
+                    No
+                  }
+
+                </td>
+
+                <td>
+
+                  <div class="table-actions">
+
+                    <button
+                      class="edit-btn"
+                      type="button"
+                      (click)="editEmployee(emp)"
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      class="delete-btn"
+                      type="button"
+                      (click)="deleteEmployee(emp.id!)"
+                    >
+                      Delete
+                    </button>
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    }
+
+  </section>
+
+</main>

@@ -1,0 +1,194 @@
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 25px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin-bottom: 20px;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+.employee-table {
+  width: 100%;
+  min-width: 1200px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.employee-table thead {
+  background: #1e3a5f;
+}
+
+.employee-table thead th {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.employee-table tbody td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.employee-table tbody tr:hover {
+  background: #f5f8fc;
+}
+
+/* ACTION BUTTONS */
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.edit-btn {
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 8px 15px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+.delete-btn {
+  border: none;
+  background: #dc2626;
+  color: #ffffff;
+  padding: 8px 15px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+.save-btn {
+  border: none;
+  background: #16a34a;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #15803d;
+}
+
+.cancel-btn {
+  border: none;
+  background: #6b7280;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: #4b5563;
+}
+
+.view-only {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* EDIT INPUTS */
+
+.edit-row {
+  background: #f8fafc;
+}
+
+.edit-row input {
+  width: 120px;
+  padding: 7px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+.edit-row input:focus {
+  border-color: #2563eb;
+}
+
+/* PAGINATION */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.pagination span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.secondary {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #1e3a5f;
+  padding: 8px 16px;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondary:hover {
+  background: #f3f6fa;
+}
+
+.secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  padding: 25px;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.error {
+  color: #dc2626;
+  font-weight: 600;
+}

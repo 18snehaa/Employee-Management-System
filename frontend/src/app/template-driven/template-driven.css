@@ -1,0 +1,131 @@
+.content {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.card {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  padding: 18px 25px;
+}
+
+.card-header h3 {
+  margin: 0;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 25px;
+}
+
+.mb-3 {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.15);
+}
+
+.form-control.ng-invalid.ng-touched,
+.form-select.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+.text-danger {
+  color: #dc3545;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.form-check-inline {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.form-check-input {
+  margin-right: 6px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #0d6efd;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0b5ed7;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5c636a;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.me-2 {
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+
+  .content {
+    padding: 15px;
+  }
+
+  .card-body {
+    padding: 18px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
