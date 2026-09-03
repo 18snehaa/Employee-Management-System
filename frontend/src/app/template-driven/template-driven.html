@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<main class="content">
+  <section class="card">
+    <h2 class="title">Template Driven Form</h2><p class="subtitle">All fields are validated using Angular template-driven forms.</p>
+    <form #f="ngForm" (ngSubmit)="submit(f)" novalidate>
+      <div class="grid">
+        <div class="field"><label>Name *</label><input name="name" [(ngModel)]="employee.name" required minlength="2" pattern="^[A-Za-z ]+$" #name="ngModel" placeholder="Enter name">@if(name.touched&&name.invalid){<span class="error">Name must contain letters and spaces only.</span>}</div>
+        <div class="field"><label>Email *</label><input type="email" name="email" [(ngModel)]="employee.email" required email #email="ngModel" placeholder="name@example.com">@if(email.touched&&email.invalid){<span class="error">Enter valid email.</span>}</div>
+        <div class="field"><label>Phone Number *</label><input name="phone" [(ngModel)]="employee.phone" required pattern="^[6-9][0-9]{9}$" maxlength="10" inputmode="numeric" #phone="ngModel" placeholder="10 digit mobile">@if(phone.touched&&phone.invalid){<span class="error">Enter valid 10 digit phone.</span>}</div>
+        <div class="field"><label>Aadhar Card *</label><input name="aadhar" [(ngModel)]="employee.aadhar" required pattern="^[0-9]{12}$" maxlength="12" inputmode="numeric" #aadhar="ngModel" placeholder="12 digit Aadhar">@if(aadhar.touched&&aadhar.invalid){<span class="error">Aadhar must contain exactly 12 digits.</span>}</div>
+        <div class="field"><label>PAN Card *</label><input name="pan" [(ngModel)]="employee.pan" required pattern="^[A-Z]{5}[0-9]{4}[A-Z]$" maxlength="10" #pan="ngModel" placeholder="ABCDE1234F">@if(pan.touched&&pan.invalid){<span class="error">Enter valid PAN.</span>}</div>
+        <div class="field"><label>Age *</label><input type="number" name="age" [(ngModel)]="employee.age" required min="18" max="60" #age="ngModel" placeholder="18 - 60">@if(age.touched&&age.invalid){<span class="error">Age must be 18 to 60.</span>}</div>
+        <div class="field"><label>Department *</label><select name="department" [(ngModel)]="employee.department" required #department="ngModel"><option value="">Select department</option>@for(d of departments;track d){<option [value]="d">{{d}}</option>}</select>@if(department.touched&&department.invalid){<span class="error">Select department.</span>}</div>
+        <div class="field"><label>Salary *</label><input type="number" name="salary" [(ngModel)]="employee.salary" required min="0" #salary="ngModel" placeholder="Salary">@if(salary.touched&&salary.invalid){<span class="error">Salary cannot be negative.</span>}</div>
+        <div class="field"><label>Gender *</label><div class="radio-row">@for(g of genders;track g){<label><input type="radio" name="gender" [value]="g" [(ngModel)]="employee.gender" required>{{g}}</label>}</div>@if(f.submitted&& !employee.gender){<span class="error">Select gender.</span>}</div>
+        <div class="field"><label>Joining Date *</label><input type="date" name="joiningDate" [(ngModel)]="employee.joiningDate" required #joiningDate="ngModel">@if(joiningDate.touched&&joiningDate.invalid){<span class="error">Select joining date.</span>}</div>
+        <div class="field checkbox-field"><label><input type="checkbox" name="activeEmployee" [(ngModel)]="employee.activeEmployee"> Active Employee</label></div>
+      </div>
+      <div class="actions"><button class="primary" type="submit" [disabled]="f.invalid||saving">Submit Employee</button><button class="secondary" type="button" (click)="f.resetForm();reset()">Clear</button></div>
+    </form>
+  </section>
+  <app-employee-table [refresh]="refresh"></app-employee-table>
+</main>
